@@ -2,6 +2,7 @@ FROM debian
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update
 RUN apt-get upgrade -y
+#русская локализация
 RUN apt-get install -y locales
 RUN ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime && \echo "Europe/Moscow" > /etc/timezone && \dpkg-reconfigure -f noninteractive tzdata && \
     sed -i -e 's/# ru_RU.UTF-8 UTF-8/ru_RU.UTF-8 UTF-8/' /etc/locale.gen && \
@@ -11,4 +12,10 @@ RUN ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime && \echo "Europe/Mos
 ENV LANGUAGE ru_RU.UTF-8
 ENV LANG ru_RU.UTF-8
 ENV LC_ALL ru_RU.UTF-8
+#установка нужных программ
+RUN apt-get install -y mc
+RUN apt-get install -y python3 pithon3-pip
+RUN apt-get install -y ipython ipython3
+RUN apt-get install -y ssh
+RUN apt-get install -y ansible
 ENTRYPOINT /bin/bash
