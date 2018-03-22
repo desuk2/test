@@ -1,0 +1,6 @@
+FROM ubuntu:1404
+ENV DEBIAN_FRONTEND noninteractive
+RUN locale-gen ru_RU.utf8 && dpkg-recofigure locales
+RUN apt-get install -y mc
+хуй пизда и джигурда
+
